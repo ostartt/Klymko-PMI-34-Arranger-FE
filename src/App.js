@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import SignUp from './pages/SignUp/SignUp'
 import SignIn from "./pages/SignIn/SignIn";
+import Header from "./components/Header/Header";
 
 import { useLayoutEffect } from 'react'
 import { connect } from 'react-redux'
@@ -17,6 +18,7 @@ function App({ setCurrentUser }) {
 
   return (
       <div>
+        <Header/>
         <Routes>
           <Route path="/">
             <Route path="sign-up" element={<SignUp />} />
