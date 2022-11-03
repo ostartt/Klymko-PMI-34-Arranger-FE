@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from 'react-router-dom'
 
-function App() {
+import SignUp from './pages/SignUp/SignUp'
+
+import { useLayoutEffect } from 'react'
+import { connect } from 'react-redux'
+import { setCurrentUser } from './redux/auth/auth.actions'
+
+function App({ setCurrentUser }) {
+  useLayoutEffect(() => {
+    const user = localStorage.getItem('user')
+    if (user) {
+      setCurrentUser(JSON.parse(user))
+    }
+  }, [setCurrentUser])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div>
+        <Routes>
+          <Route path="/">
+            <Route path="sign-up" element={<SignUp />} />
+          </Route>
+        </Routes>
+      </div>
+  )
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+})
+
+export default connect(null, mapDispatchToProps)(App)
