@@ -4,7 +4,7 @@ import './subtitle-form-field.styles.scss'
 
 const SubtitleFormField = ({children, ...otherProps}) => {
     return (
-        <span className='subtitle-form-field' {...otherProps}>Create your own story</span>
+        <span className='subtitle-form-field' {...otherProps}>Welcome to Arranger</span>
     )
 }
 

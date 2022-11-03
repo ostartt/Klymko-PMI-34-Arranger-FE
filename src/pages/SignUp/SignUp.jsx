@@ -12,6 +12,7 @@ import {
 import {connect} from 'react-redux'
 import {validateInput} from '../../utils/SignUp/validateInput'
 import TitleFormField from '../../components/_common/TitleFormField/TitleFormField'
+import SubtitleFormField from "../../components/_common/SubtitleFormField/SubtitleFormField";
 
 const SignUp = ({
                     signUpRequest,
@@ -83,6 +84,7 @@ const SignUp = ({
         <div className="signup-container">
             <div className="signup">
                 <TitleFormField>Sign Up</TitleFormField>
+                <SubtitleFormField/>
                 <form className="signup-form" onSubmit={handleSubmit}>
                     <div className="signup-form__flex">
                         <FormInput
