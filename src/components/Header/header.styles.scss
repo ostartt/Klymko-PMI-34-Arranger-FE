@@ -27,7 +27,7 @@
   }
 
   .active {
-    color: #35ad83;
+    color: #e54b22;
   }
 }
 
@@ -110,7 +110,7 @@
     cursor: pointer;
 
     &:hover {
-      background: #6eb29a;
+      background: #e54b22;
       border: 2px solid #ffffff;
       color: #fff;
     }
@@ -118,7 +118,7 @@
 }
 
 .header-auth__signin.active {
-  background: #6eb29a;
+  background: #e54b22;
   border: 2px solid #ffffff;
   color: #fff;
 }
