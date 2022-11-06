@@ -16,10 +16,10 @@ export const failureLoadLogsList = (error) => ({
 export const requestLogsList =
     () => (dispatch, getState) => {
         dispatch(startLoadLogsList())
-        const PAGE_AMOUNT = 2;
+        const PAGE_AMOUNT = 6;
         axios
             .get(
-                `http://localhost:8765/api/v1/logs/${getState().auth.userObject.id}/users?page=${getState().rating.page - 1}&amount=${PAGE_AMOUNT}`, {
+                `http://localhost:8765/api/v1/logs/users?page=${getState().rating.page - 1}&amount=${PAGE_AMOUNT}`, {
                     headers: {authorization: getState().auth.userObject.jwt}
                 }
             )

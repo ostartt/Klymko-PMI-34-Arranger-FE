@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 import { changePage } from '../../redux/rating/rating.actions'
 
 const PaginationTaskHistory = ({ page, changePage, totalLogs }) => {
-  const AMOUNT = 2
+  const AMOUNT = 6
   // max number of pages to show from left and right sides
   const MAX_NUM_OF_PAGES = 2
 
