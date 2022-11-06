@@ -17,7 +17,7 @@ const Header = ({user, userLogout}) => {
                 <nav className="header-buttons">
                     <ul className='header-links'>
                         <li className="header-buttons__button"><NavLink to='/permutations'>Permutations</NavLink></li>
-                        <li className="header-buttons__button"><NavLink to='/help'>Help</NavLink></li>
+                        <li className="header-buttons__button"><NavLink to='/panel'>Panel</NavLink></li>
                     </ul>
                 </nav>
             </div>
