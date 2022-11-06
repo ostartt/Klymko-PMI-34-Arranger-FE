@@ -3,12 +3,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #B2D8C9;
+  background: #abd1ff;
   height: 100vh;
 }
 
 .signup {
-  width: 600px;
+  width: 550px;
   box-sizing: border-box;
   padding: 40px 70px;
 
@@ -62,7 +62,7 @@
   &__link{
     text-decoration: underline;
     cursor: pointer;
-    color: #6EB39A;
+    color: #FF6645;
     &:hover{
       text-decoration: none;
     }

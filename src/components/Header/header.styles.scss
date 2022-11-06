@@ -1,0 +1,129 @@
+.header {
+  font-size: 20px;
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  background-color: #fff;
+  padding: 10px 34px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+  a {
+    text-decoration: none;
+  }
+
+  ul,
+  ul li,
+  ul ul li {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+  }
+
+  .active {
+    color: #e54b22;
+  }
+}
+
+.header-logo {
+  display: flex;
+  align-items: baseline;
+  color: #000;
+
+  margin-right: 40px;
+}
+
+.header-buttons {
+  position: relative;
+
+  .header-links {
+    display: flex;
+  }
+
+  &__button + &__button {
+    margin-left: 45px;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 2px;
+    background: #e1e4e9;
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+  }
+}
+
+.header-buttons__button {
+  display: block;
+  font-weight: 600;
+
+  line-height: 33px;
+
+  a {
+    color: #555461;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  &:first-child {
+    margin-left: 45px;
+  }
+}
+
+.header-content {
+  display: flex;
+  align-items: baseline;
+}
+
+.header-auth {
+  font-weight: 700;
+  line-height: 33px;
+  display: flex;
+  align-items: center;
+
+  &__signup {
+    color: #555461;
+
+    &:hover {
+      color: #000;
+    }
+  }
+
+  &__signin {
+    color: #555461;
+    margin-left: 28px;
+    border: 2px solid #bfbfbf;
+    border-radius: 30px;
+    padding: 3px 15px;
+    cursor: pointer;
+
+    &:hover {
+      background: #e54b22;
+      border: 2px solid #ffffff;
+      color: #fff;
+    }
+  }
+}
+
+.header-auth__signin.active {
+  background: #e54b22;
+  border: 2px solid #ffffff;
+  color: #fff;
+}
+
+.header-auth__logout {
+  border: 2px solid #bfbfbf;
+  border-radius: 30px;
+}

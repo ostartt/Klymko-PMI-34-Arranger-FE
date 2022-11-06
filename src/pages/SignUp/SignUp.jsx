@@ -124,7 +124,7 @@ const SignUp = ({
                             name={'confirmPassword'}
                             value={user.confirmPassword}
                             onChange={handleChange}
-                            label={'Repeat password'}
+                            label={'Confirm password'}
                             error={errors.confirmPassword}
                         />
                     </div>
