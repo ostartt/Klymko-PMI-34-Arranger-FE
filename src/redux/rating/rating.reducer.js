@@ -35,6 +35,10 @@ export const ratingReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 page: action.payload,
             }
+        case RatingTypes.CANCEL:
+            return {
+                ...state,
+            }
         default:
             return state
     }

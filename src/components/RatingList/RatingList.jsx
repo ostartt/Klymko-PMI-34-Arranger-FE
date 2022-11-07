@@ -7,7 +7,6 @@ import WithSpinner from "../withSpinner/withSpinner";
 
 
 const RatingList = ({logsList, userId}) => {
-    console.log(logsList)
     return (
         logsList.map((logs) => <RatingItem key={logs.id} {...logs} userId={userId} />)
     )

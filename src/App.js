@@ -9,6 +9,7 @@ import {connect} from 'react-redux'
 import {setCurrentUser} from './redux/auth/auth.actions'
 import LandingPage from "./pages/LandingPage/LandingPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App({setCurrentUser}) {
     useLayoutEffect(() => {
@@ -22,6 +23,14 @@ function App({setCurrentUser}) {
         <div>
             <Header/>
             <Routes>
+                <Route
+                    path="/panel"
+                    element={
+                        <ProtectedRoute>
+
+                        </ProtectedRoute>
+                    }
+                />
                 <Route path="/">
                     <Route index element={<LandingPage/>}/>
                     <Route path="sign-up" element={<SignUp/>}/>

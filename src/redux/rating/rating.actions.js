@@ -31,6 +31,32 @@ export const requestLogsList =
             .catch((error) => dispatch(failureLoadLogsList(error)))
     }
 
+export const cancelTask =
+    (logId) => (dispatch, getState) => {
+        axios
+            .put(
+                `http://localhost:8765/api/v1/permutations/${logId}`, {},{
+                    headers: {authorization: getState().auth.userObject.jwt}
+                }
+            )
+            .then((res) => {
+            })
+            .catch((error) => console.log(error))
+    }
+
+export const addTask =
+    (string) => (dispatch, getState) => {
+        axios
+            .post(
+                `http://localhost:8765/api/v1/permutations`, {givenString:string},{
+                    headers: {authorization: getState().auth.userObject.jwt}
+                }
+            )
+            .then((res) => {
+            })
+            .catch((error) => console.log(error))
+    }
+
 export const changePage = (page) => ({
     type: RatingTypes.CHANGE_PAGE,
     payload: page,

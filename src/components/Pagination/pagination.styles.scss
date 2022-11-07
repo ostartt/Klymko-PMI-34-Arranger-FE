@@ -1,13 +1,11 @@
 
-  $bgAndArrowColor: #6eb29a;
-  $greyDark: #2d4848;
   .pagination-container {
     font-size: 62.5%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: $greyDark;
+    color: #ff8e75;
     ul {
       list-style-type: none;
     }
@@ -37,7 +35,7 @@
     &__dots {
       width: 2.6rem;
       height: 2.6rem;
-      color: $bgAndArrowColor;
+      color: #ff8e75;
       cursor: initial;
     }
   
@@ -47,26 +45,26 @@
       border-radius: 0.4rem;
   
       &:hover {
-        color: $bgAndArrowColor;
+        color: #ff8e75;
       }
   
       &.active {
         color: #ffffff;
-        background: $bgAndArrowColor;
+        background: #ff8e75;
         font-weight: 600;
-        border: 1px solid $bgAndArrowColor;
+        border: 1px solid #ff8e75
       }
     }
   
     &__btn {
-      color: $bgAndArrowColor;
+      color: #ff8e75;
       padding:0 1rem;
   
       &.active {
-        color: $greyDark;
+        color: #ff8e75;
   
         &:hover {
-          color: $bgAndArrowColor;
+          color: #ff8e75;
         }
       }
     }

@@ -5,4 +5,5 @@ export const RatingTypes = {
     SET_RATING_FILTER:'SET_RATING_FILTER',
     SHOW_ME_IN_LIST:'SHOW_ME_IN_LIST',
     CHANGE_PAGE: 'CHANGE_PAGE',
+    CANCEL: 'CANCEL',
 }

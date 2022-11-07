@@ -1,58 +1,82 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import './dashboard.styles.scss'
 
 import RatingList from '../../components/RatingList/RatingList'
 import PaginationRating from '../../components/Pagination/PaginationRating'
 
 import {
-  requestLogsList,
-  changePage,
+    requestLogsList,
+    changePage,
+    addTask
 } from '../../redux/rating/rating.actions'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
+import FormInput from "../../components/FormInput/FormInput";
+import {useNavigate} from "react-router-dom";
 
 
 const Dashboard = ({
-  loadLogs,
-  isFetching,
-  page,
-  changePage,
-}) => {
+                       loadLogs,
+                       isFetching,
+                       page,
+                       addTask,
+                       changePage,
+                   }) => {
 
-  // load users
-  useEffect(() => {
-    loadLogs()
-  }, [loadLogs, page])
+  const navigate = useNavigate();
+    // load users
+    useEffect(() => {
+        loadLogs()
+    }, [loadLogs, page])
 
+    const [givenString, setGivenString] = useState("");
 
-  return (
-    <div className="dashboard">
-      <h1>Logs</h1>
-      <div className="dashboard-task-table">
-        <div className="dashboard-table-header">
-          <p>ID</p>
-          <p>String</p>
-          <p>Number</p>
-          <p>Instance</p>
-          <p>Status</p>
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        addTask(givenString)
+        setGivenString("")
+        navigate(0);
+    }
+
+    return (
+        <div className="dashboard">
+            <h1>Dashboard - Logs</h1>
+            <form className={"dashboard-form"} onSubmit={handleSubmit}>
+                <FormInput
+                    name={'givenString'}
+                    type="text"
+                    label={'string'}
+                    value={givenString}
+                    onChange={(e) => setGivenString(e.target.value)}
+                />
+                <button type={"submit"} className={"dashboard-button"}>Submit</button>
+            </form>
+            <div className="dashboard-task-table">
+                <div className="dashboard-table-header">
+                    <p>ID</p>
+                    <p>String</p>
+                    <p>Number</p>
+                    <p>Instance</p>
+                    <p>Status</p>
+                </div>
+                <RatingList
+                    isLoading={isFetching}
+                />
+            </div>
+            <PaginationRating/>
         </div>
-        <RatingList
-          isLoading={isFetching}
-        />
-      </div>
-      <PaginationRating />
-    </div>
-  )
+    )
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  loadLogs: () =>
-    dispatch(requestLogsList()),
-  changePage: (page) => dispatch(changePage(page)),
+    loadLogs: () =>
+        dispatch(requestLogsList()),
+    changePage: (page) => dispatch(changePage(page)),
+    addTask: (string) => dispatch(addTask(string)),
 })
 
 const mapStateToProps = (state) => ({
-  isFetching: state.rating.isFetching,
-  page: state.rating.page,
+    isFetching: state.rating.isFetching,
+    page: state.rating.page,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard)

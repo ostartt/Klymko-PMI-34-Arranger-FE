@@ -41,8 +41,6 @@ const PaginationList = ({
     }
     changePage(newPage)
   }
-  console.log(pages)
-  console.log(numOfPages)
 
   return (
     <div className="pagination-container">
