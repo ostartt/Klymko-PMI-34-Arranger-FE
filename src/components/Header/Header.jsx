@@ -16,8 +16,18 @@ const Header = ({user, userLogout}) => {
                 </Link>
                 <nav className="header-buttons">
                     <ul className='header-links'>
-                        <li className="header-buttons__button"><NavLink to='/permutations'>Permutations</NavLink></li>
-                        <li className="header-buttons__button"><NavLink to='/panel'>Panel</NavLink></li>
+                        {
+                            user
+                            &&
+                            <li className="header-buttons__button"><NavLink to='/permutations'>Permutations</NavLink>
+                            </li>
+
+                        }
+                        {
+                            user?.role === 'ADMIN'
+                            &&
+                            <li className="header-buttons__button"><NavLink to='/panel'>Panel</NavLink></li>
+                        }
                     </ul>
                 </nav>
             </div>
@@ -25,7 +35,6 @@ const Header = ({user, userLogout}) => {
                 {user
                     ?
                     <>
-                        <NavLink to='/profile' className="header-auth__signup">Profile</NavLink>
                         <div className="header-auth__signin" onClick={() => {
                             userLogout()
                             navigate('/')

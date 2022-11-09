@@ -41,7 +41,7 @@ const SignUp = ({
     const [errors, setErrors] = useState({})
 
     function signIn() {
-        navigate("/");
+        navigate("/sign-in");
     }
 
     const handleChange = (event) => {
