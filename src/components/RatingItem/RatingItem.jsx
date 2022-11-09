@@ -37,7 +37,6 @@ const RatingItem = ({
     }
     const handleCancel = () => {
         cancelTask(id)
-        permutationStatus = logsEnum["INTERRUPTED"]
         handleClose()
     }
 

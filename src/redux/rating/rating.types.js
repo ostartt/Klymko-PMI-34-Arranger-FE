@@ -6,4 +6,5 @@ export const RatingTypes = {
     SHOW_ME_IN_LIST:'SHOW_ME_IN_LIST',
     CHANGE_PAGE: 'CHANGE_PAGE',
     CANCEL: 'CANCEL',
+    CANCEL_STATUS: 'CANCEL_STATUS'
 }

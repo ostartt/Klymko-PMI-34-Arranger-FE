@@ -33,6 +33,7 @@ export const requestLogsList =
 
 export const cancelTask =
     (logId) => (dispatch, getState) => {
+    dispatch(cancelTaskItem(getState().rating.logsList.filter(item => item.id === logId)[0]))
         axios
             .put(
                 `http://localhost:8765/api/v1/permutations/${logId}`, {},{
@@ -40,9 +41,19 @@ export const cancelTask =
                 }
             )
             .then((res) => {
+                const cancelledTasks = JSON.parse(localStorage.getItem("cancelledTasks")) ?
+                    JSON.parse(localStorage.getItem("cancelledTasks")) : []
+
+                localStorage.setItem("cancelledTasks", JSON.stringify(cancelledTasks.filter(item => item.id !== logId)))
             })
             .catch((error) => console.log(error))
     }
+
+export const cancelTaskItem = (item) => ({
+    type: RatingTypes.CANCEL_STATUS,
+    payload: item,
+})
+
 
 export const addTask =
     (string) => (dispatch, getState) => {

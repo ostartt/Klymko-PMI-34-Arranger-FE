@@ -10,6 +10,7 @@ import {setCurrentUser} from './redux/auth/auth.actions'
 import LandingPage from "./pages/LandingPage/LandingPage";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import ProtectedRoute from "./utils/ProtectedRoute";
+import ServerPanel from "./pages/ServerPanel/ServerPanel"
 
 function App({setCurrentUser}) {
     useLayoutEffect(() => {
@@ -27,7 +28,7 @@ function App({setCurrentUser}) {
                     path="/panel"
                     element={
                         <ProtectedRoute>
-
+                            <ServerPanel/>
                         </ProtectedRoute>
                     }
                 />

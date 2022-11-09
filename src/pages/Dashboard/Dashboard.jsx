@@ -12,6 +12,7 @@ import {
 import {connect} from 'react-redux'
 import FormInput from "../../components/FormInput/FormInput";
 import {useNavigate} from "react-router-dom";
+import {validateInput} from "../../utils/Dashboard/validateInput";
 
 
 const Dashboard = ({
@@ -29,12 +30,26 @@ const Dashboard = ({
     }, [loadLogs, page])
 
     const [givenString, setGivenString] = useState("");
+    const [errors, setErrors] = useState({})
+
+    const isValid = () => {
+        const {errors, isValid} = validateInput(givenString)
+        if (!isValid) {
+            setErrors(errors)
+        }
+        return isValid
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        addTask(givenString)
-        setGivenString("")
-        navigate(0);
+
+        if(isValid()) {
+            addTask(givenString)
+            setGivenString("")
+            setErrors({})
+            navigate(0);
+        }
+
     }
 
     return (
@@ -47,6 +62,7 @@ const Dashboard = ({
                     label={'string'}
                     value={givenString}
                     onChange={(e) => setGivenString(e.target.value)}
+                    error={errors.givenString}
                 />
                 <button type={"submit"} className={"dashboard-button"}>Submit</button>
             </form>
