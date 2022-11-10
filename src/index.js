@@ -7,8 +7,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {store} from "./redux/store";
 import {Provider} from "react-redux";
+import app from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+const PORT = process.env.PORT || 5000;
 root.render(
     <Provider store={store}>
         <BrowserRouter>
@@ -18,3 +20,7 @@ root.render(
 );
 
 reportWebVitals();
+
+app.listen(PORT, () => {
+    console.log(`server started on port ${PORT}`);
+});
