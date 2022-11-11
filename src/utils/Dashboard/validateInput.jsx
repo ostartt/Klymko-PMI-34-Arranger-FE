@@ -4,8 +4,8 @@ export const validateInput = data => {
     let errors = {}
     if (Validator.isEmpty(data.trim())) {
         errors.givenString = 'String is required'
-    } else if (data.length > 10) {
-        errors.givenString = 'String length too long, max 10 symbols'
+    } else if (data.length > 10 || data.length < 3) {
+        errors.givenString = 'String length is incorrect (min - 3, max - 10)'
     }
     return {
         errors,
