@@ -12,6 +12,10 @@
   gap: 50px;
   align-items: center;
 
+  h2 {
+    color: #383838;
+  }
+
   .column {
     width: 250px;
     display: flex;
@@ -30,6 +34,7 @@
 
     span {
       color: #383838;
+      font-weight: 700;
     }
   }
 }

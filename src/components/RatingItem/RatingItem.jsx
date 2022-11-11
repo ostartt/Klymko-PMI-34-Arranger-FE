@@ -11,6 +11,17 @@ const logsEnum = {
     "INTERRUPTED": "Stop"
 };
 
+
+// const timeEnum = {
+//     3: 1,
+//     4: 1,
+//     5: 1,
+//     6: 1,
+//     7: 2,
+//     8: 13, // 13 - 16, 8 - 13, 12 - 17
+//     9: 45
+// };
+
 const RatingItem = ({
                         id,
                         permutation,
@@ -40,12 +51,23 @@ const RatingItem = ({
         handleClose()
     }
 
+    // let [completed, setCompleted] = useState(0);
+    // useEffect(() => {
+    //     setInterval(() => {
+    //
+    //         const time = timeEnum[givenString.length];
+    //         setCompleted(completed += Math.floor(Math.random() * (100 / time)) + time / 2);
+    //
+    //     }, 2000)
+    // }, []);
+    //
+    // console.log(completed)
 
     return (
         <>
             <div className="task-item" role={"button"} onClick={handleClick}>
                 <div className="task-data dashboard-task-id">
-                    <p>{id.slice(20, 25)}</p>
+                    <p>{id.slice(22, 27)}</p>
                 </div>
                 <div className="task-data dashboard-task-full-name">
                     <p>{givenString}</p>
@@ -54,7 +76,7 @@ const RatingItem = ({
                     <p>{permutationNumber}</p>
                 </div>
                 <div className="task-data dashboard-task-points">
-                    <p>{instanceId.slice(-5)}</p>
+                    <p>{instanceId.slice(8, 14)}</p>
                 </div>
                 <div className={"dashboard-category " + logsEnum[permutationStatus].toLowerCase()}>
                     <p>{logsEnum[permutationStatus]}</p>
@@ -100,13 +122,13 @@ const RatingItem = ({
                                  <span className={"bold"}>
                               Start:
                           </span>
-                                {new Date(startUpTime).toLocaleTimeString()}
+                                {startUpTime ? new Date(startUpTime).toLocaleTimeString() : logsEnum[permutationStatus]}
                             </div>
                             <div className="row">
                                  <span className={"bold"}>
                               Finish:
                           </span>
-                                {new Date(shutDownTime).toLocaleTimeString()}
+                                {shutDownTime ? new Date(shutDownTime).toLocaleTimeString() : logsEnum[permutationStatus]}
                             </div>
                         </div>
                         <div className="column">
@@ -114,7 +136,7 @@ const RatingItem = ({
                               <span className={"bold"}>
                               Time:
                           </span>
-                                {executionTime}
+                                {executionTime ? executionTime : logsEnum[permutationStatus]}
                             </div>
                             <div className="row">
                                  <span className={"bold"}>
@@ -122,7 +144,52 @@ const RatingItem = ({
                           </span>
                                 {logsEnum[permutationStatus]}
                             </div>
-                            <div className={"empty-row"}/>
+                            <div className="empty-row">
+                                <div className="empty-row__stage">
+                                    {
+                                        permutationNumber
+                                            ?
+                                            <h2>
+                                                Stage 1: <span className={"empty-row__done"}>Done</span>
+                                            </h2>
+                                            :
+                                            logsEnum[permutationStatus] === "Stop"
+                                                ?
+                                                <h2>
+                                                    Stage 1: <span
+                                                    className={"empty-row__stop"}>{logsEnum[permutationStatus]}</span>
+                                                </h2>
+                                                :
+                                                <h2>
+                                                    Stage 1: <span
+                                                    className={"empty-row__loading"}>{logsEnum[permutationStatus]}</span>
+                                                </h2>
+
+                                    }
+                                </div>
+                                <div className="empty-row__stage">
+                                    {
+                                        executionTime
+                                            ?
+                                            <h2>
+                                                Stage 2: <span className={"empty-row__done"}>Done</span>
+                                            </h2>
+                                            :
+                                            logsEnum[permutationStatus] === "Stop"
+                                                ?
+                                                <h2>
+                                                    Stage 2: <span
+                                                    className={"empty-row__stop"}>{logsEnum[permutationStatus]}</span>
+                                                </h2>
+                                                :
+                                                <h2>
+                                                    Stage 2: <span
+                                                    className={"empty-row__loading"}>{logsEnum[permutationStatus]}</span>
+                                                </h2>
+                                    }
+                                </div>
+
+                            </div>
                         </div>
                         <div className="column-button">
                             <button className="dashboard-button" type={"button"} onClick={handleCancel}>

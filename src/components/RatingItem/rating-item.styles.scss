@@ -93,7 +93,7 @@
       flex-direction: column;
     }
 
-    .row{
+    .row {
       display: flex;
       gap: 15px;
       font-size: 1.2rem;
@@ -107,11 +107,34 @@
       }
     }
 
-    .empty-row{
+    .empty-row {
       padding: 28px 20px;
+      height: 50px;
+
+      .empty-row__stage {
+        padding-top: 36px;
+        font-size: 20px;
+
+        h2 {
+          font-size: 24px;
+          color: #383838;
+
+          .empty-row__done {
+            color: #9fc08c;
+          }
+
+          .empty-row__loading {
+            color: #e8c083;
+          }
+
+          .empty-row__stop {
+            color: #FF6645;
+          }
+        }
+      }
     }
 
-    .bold{
+    .bold {
       font-size: 1.3rem;
       font-weight: bold;
     }
