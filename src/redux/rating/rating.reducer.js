@@ -26,7 +26,7 @@ export const ratingReducer = (state = INITIAL_STATE, action) => {
                 isFetching: false,
                 logsList: action.payload.logsDTOList.map(item => {
                     const cancelledElement = cancelledTasks.find(elem => elem.id === item.id)
-                    if(cancelledElement){
+                    if (cancelledElement) {
                         return cancelledElement
                     }
                     return item
@@ -52,13 +52,15 @@ export const ratingReducer = (state = INITIAL_STATE, action) => {
                 cancelledTasks: action.payload
             }
         case RatingTypes.CANCEL_STATUS:
-            localStorage.setItem("cancelledTasks", JSON.stringify([... state.cancelledTasks, {... action.payload,
-                permutationStatus: "INTERRUPTED"}]))
+            localStorage.setItem("cancelledTasks", JSON.stringify([...state.cancelledTasks, {
+                ...action.payload,
+                permutationStatus: "INTERRUPTED"
+            }]))
             return {
                 ...state,
-                cancelledTasks: [... state.cancelledTasks, action.payload],
+                cancelledTasks: [...state.cancelledTasks, action.payload],
                 logsList: state.logsList.map(item => {
-                    if(item.id === action.payload.id) {
+                    if (item.id === action.payload.id) {
                         return {...item, permutationStatus: "INTERRUPTED"}
                     }
                     return item

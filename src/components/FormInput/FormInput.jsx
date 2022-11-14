@@ -7,7 +7,7 @@ const FormInput = ({ label, error, labelText, ...otherProps }) => {
       <input
         className={`form-input ${error ? "has-error" : ""}`}
         {...otherProps}
-        autoComplete="off"
+        autoComplete="on"
         placeholder={label}
       />
       {error && <span className="help-block">{error}</span>}
