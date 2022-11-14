@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react'
 import './sarver-panel.styles.scss'
 import {requestServerList} from "../../redux/server/server.actions";
-import {connect, useDispatch, useSelector} from "react-redux";
-import axios from "axios";
+import {connect} from "react-redux";
 
 const ServerPanel = ({
                          page,

@@ -122,13 +122,13 @@ const RatingItem = ({
                                  <span className={"bold"}>
                               Start:
                           </span>
-                                {startUpTime ? new Date(startUpTime).toLocaleTimeString() : logsEnum[permutationStatus]}
+                                {startUpTime ? new Date(startUpTime).toLocaleTimeString() : '...'}
                             </div>
                             <div className="row">
                                  <span className={"bold"}>
                               Finish:
                           </span>
-                                {shutDownTime ? new Date(shutDownTime).toLocaleTimeString() : logsEnum[permutationStatus]}
+                                {shutDownTime ? new Date(shutDownTime).toLocaleTimeString() : '...'}
                             </div>
                         </div>
                         <div className="column">
@@ -136,7 +136,7 @@ const RatingItem = ({
                               <span className={"bold"}>
                               Time:
                           </span>
-                                {executionTime ? executionTime : logsEnum[permutationStatus]}
+                                {executionTime ? executionTime + ' sec': '...'}
                             </div>
                             <div className="row">
                                  <span className={"bold"}>
