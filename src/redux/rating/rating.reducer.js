@@ -20,7 +20,7 @@ export const ratingReducer = (state = INITIAL_STATE, action) => {
         case RatingTypes.SUCCESS_LOAD_LIST:
             const cancelledTasks = JSON.parse(localStorage.getItem("cancelledTasks")) ?
                 JSON.parse(localStorage.getItem("cancelledTasks")) : []
-            console.log(action.payload)
+            // console.log(action.payload)
             return {
                 ...state,
                 isFetching: false,

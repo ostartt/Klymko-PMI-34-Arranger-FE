@@ -64,7 +64,7 @@ export const addTask =
                 }
             )
             .then((res) => {
-                console.log("task added")
+                // console.log("task added")
             })
             .catch((error) => console.log(error))
     }

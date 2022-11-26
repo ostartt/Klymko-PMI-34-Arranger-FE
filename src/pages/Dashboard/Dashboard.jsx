@@ -34,7 +34,11 @@ const Dashboard = ({
     }, [loadLogs, page])
 
     useEffect(() => {
-        inputRef.current.focus()
+        // inputRef.current.focus()
+        const logsTimeout = setInterval(loadLogs, 5000);
+        return () => {
+            clearInterval(logsTimeout)
+        }
     })
 
     const [givenString, setGivenString] = useState("");
@@ -54,9 +58,6 @@ const Dashboard = ({
             addTask(givenString).then(() => {
                 loadLogs()
             })
-            setTimeout(() => {
-                loadLogs()
-            }, 1000)
             setGivenString("")
             setErrors({})
         }
