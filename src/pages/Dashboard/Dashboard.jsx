@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import './dashboard.styles.scss'
 
 import RatingList from '../../components/RatingList/RatingList'
@@ -21,13 +21,25 @@ const Dashboard = ({
                        page,
                        addTask,
                        changePage,
+                       logsList
                    }) => {
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+
+    const inputRef = useRef(null)
+
     // load users
     useEffect(() => {
         loadLogs()
     }, [loadLogs, page])
+
+    useEffect(() => {
+        // inputRef.current.focus()
+        const logsTimeout = setInterval(loadLogs, 5000);
+        return () => {
+            clearInterval(logsTimeout)
+        }
+    })
 
     const [givenString, setGivenString] = useState("");
     const [errors, setErrors] = useState({})
@@ -40,14 +52,14 @@ const Dashboard = ({
         return isValid
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-
-        if(isValid()) {
-            addTask(givenString)
+        if (isValid()) {
+            addTask(givenString).then(() => {
+                loadLogs()
+            })
             setGivenString("")
             setErrors({})
-            navigate(0);
         }
 
     }
@@ -63,6 +75,7 @@ const Dashboard = ({
                     value={givenString}
                     onChange={(e) => setGivenString(e.target.value)}
                     error={errors.givenString}
+                    ref={inputRef}
                 />
                 <button type={"submit"} className={"dashboard-button"}>Submit</button>
             </form>
@@ -75,7 +88,7 @@ const Dashboard = ({
                     <p>Status</p>
                 </div>
                 <RatingList
-                    isLoading={isFetching}
+                    isLoading={!logsList.length}
                 />
             </div>
             <PaginationRating/>
@@ -92,6 +105,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
     isFetching: state.rating.isFetching,
+    logsList: state.rating.logsList,
     page: state.rating.page,
 })
 

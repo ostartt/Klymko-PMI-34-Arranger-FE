@@ -10,8 +10,12 @@ const ServerPanel = ({
                      }) => {
 
     const {isFetching, serverList} = server
+
     useEffect(() => {
-        loadServers()
+        const serversTimeout = setInterval(loadServers, 5000);
+        return () => {
+            clearInterval(serversTimeout)
+        }
     }, [])
 
     return (
@@ -19,10 +23,13 @@ const ServerPanel = ({
             <h1>Admin - Servers</h1>
             <div className={"panel"}>
                 {
-                    isFetching
+                    !serverList.length
                         ?
-                        <div className="spinner-overlay">
-                            <div className='spinner-container'/>
+                        <div className="spinner">
+                            <div className="spinner-overlay">
+                                <div className='spinner-container'/>
+                            </div>
+
                         </div>
 
                         :

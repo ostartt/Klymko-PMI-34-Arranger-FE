@@ -116,7 +116,7 @@ const RatingItem = ({
                               <span className={"bold"}>
                               Instance:
                           </span>
-                                {instanceId.slice(-5)}
+                                {instanceId.slice(8, 14)}
                             </div>
                             <div className="row">
                                  <span className={"bold"}>
@@ -136,7 +136,7 @@ const RatingItem = ({
                               <span className={"bold"}>
                               Time:
                           </span>
-                                {executionTime ? executionTime + ' sec': '...'}
+                                {executionTime !== null ? executionTime + ' sec': executionTime === 0 ? '0 sec': '...'}
                             </div>
                             <div className="row">
                                  <span className={"bold"}>

@@ -57,13 +57,14 @@ export const cancelTaskItem = (item) => ({
 
 export const addTask =
     (string) => (dispatch, getState) => {
-        axios
+        return axios
             .post(
                 `http://localhost:8765/api/v1/permutations`, {givenString:string},{
                     headers: {authorization: getState().auth.userObject.jwt}
                 }
             )
             .then((res) => {
+                // console.log("task added")
             })
             .catch((error) => console.log(error))
     }
